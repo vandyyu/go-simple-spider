@@ -1,0 +1,8 @@
+package layer
+
+type RET_STATUS_TYPE int
+const (
+	NOT_IMPL RET_STATUS_TYPE = 0
+	SYS_ERROR RET_STATUS_TYPE = -1
+	OK RET_STATUS_TYPE = 1
+)
