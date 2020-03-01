@@ -41,6 +41,7 @@ java -cp .:res/selenium-server-standalone-3.14.0.jar server.Main
 
 2. main.go里面是同时爬baidu和sina的样例，按自己需要自定好之后，执行：
   ```
+    export GOPATH="src目录的父目录"
     go run main.go
   ```
 注意：第一次运行的时候程序会立即结束，会在GOPATH下生成configs和logs配置文件。修改好这些文件之后，再一次执行即可。改下common.conf里面maxDepth应该就可以运行demo了。
