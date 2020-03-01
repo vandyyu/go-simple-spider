@@ -38,23 +38,28 @@ javac -d . *.java -cp res/selenium-server-standalone-3.14.0.jar
 java -cp .:res/selenium-server-standalone-3.14.0.jar server.Main
 ```
 等待所有selenium池加载完毕。SeleniumPool.java里面driver路径要改一下。
+
 2. main.go里面是同时爬baidu和sina的样例，按自己需要自定好之后，执行：
-```
-export GOPATH="src目录的父目录"
-go run main.go
-```
+  ```
+    go run main.go
+  ```
 注意：第一次运行的时候程序会立即结束，会在GOPATH下生成configs和logs配置文件。修改好这些文件之后，再一次执行即可。改下common.conf里面maxDepth应该就可以运行demo了。
+
 3. snet/request.go提供了使用Selenium请求http、使用golang网络包请求http两种封装，自定义下载的时候按需使用即可。
+
 4. common.conf
   - maxDepth表示最大爬取深度。
   - numUnit表示组合成一个Group所需要的Unit个数(Note: 多个Unit组成一个Group，多个Group组成一层Layer，每个Group会启动一个线程，当前层所有节点结束才会进行下一层。每个Unit会链接多个Part, Part为最小可执行单位。)。
   - numCachedText表示缓存多少解析完成的文本数据之后，才会调用persistence函数刷出去。
+
 5. log.conf
   - logRootDir表示日志存储根目录
   - logFileSize表示日志文件超过这个大小之后，才会新建一个日志文件。
+
 6. global.log
   - 此文件是全局日志文件，不区分网站。
-######
+
+###### 其他
 - author: Vandy Yu
 - email: 13122017572@163.com
 - This project is copied from my gitee project.[https://gitee.com/vandyyu/go-simple-spider/tree/framework-dev.0.9.1/]
